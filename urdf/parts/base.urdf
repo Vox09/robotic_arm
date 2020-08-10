@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="base_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+  <link name="base">
+    <inertial>
+      <origin xyz="0 -6.0302837e-02 6.6890578e-02" rpy="0 0 0" />
+      <mass value="4.3718247e+01" />
+      <inertia 
+      ixx="2.5888259e-00" 
+      ixy="0.0000000e-00" 
+      ixz="0.0000000e-00" 
+      iyy="1.8738491e-00" 
+      iyz="-6.2240048e-02" 
+      izz="2.8848656e-00" />
+    </inertial>
+    <visual>
+      <xacro:base_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/base.STL" 
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:base_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/base.STL" 
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+      <surface>
+        <mu>1.2</mu>
+        <kp>5e7</kp>
+        <kd>1.0</kd>
+      </surface>
+    </collision>
+  </link>
+</robot>

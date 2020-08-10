@@ -1,0 +1,37 @@
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find robotic_arm)/worlds/robotic_arm.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find robotic_arm)/urdf/robotic_arm.xacro'" />
+  <param name="sanjiaokuai_description" command="$(find xacro)/xacro '$(find robotic_arm)/urdf/sanjiaokuai.urdf'" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner_robot" pkg="gazebo_ros" type="spawn_model" respawn="false" 
+    output="screen" args="-urdf -model robotic_arm -param robot_description -z 0.2"/>
+
+  <node name="urdf_spawner_sanjiaokuai" pkg="gazebo_ros" type="spawn_model" respawn="false" 
+    output="screen" args="-urdf -model sanjiaokuai -param sanjiaokuai_description -x 0.5 -y 0.8 -z 0.0 -R 0 -P -1.57 -Y 1.5707"/>
+
+  <node name="img_viewer" pkg="image_view" type="image_view" respawn="false" 
+    output="screen" args="image:=/robotic_arm/camera/image_raw"/>
+  <!-- ros_control robotic_arm launch file -->
+  <include file="$(find robotic_arm)/launch/control.launch" />
+
+
+</launch>

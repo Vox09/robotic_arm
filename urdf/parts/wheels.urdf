@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="wheel">
+    <inertial>
+      <mass value="0.5" />
+      <inertia ixx="5e-8" ixy="0.0000000e-00" ixz="0.0000000e-00" iyy="5e-8" iyz="0.0" izz="5e-8" />
+    </inertial>
+    <visual>
+      <geometry>
+        <cylinder radius="0.08" length="0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.08" length="0.05"/>
+      </geometry>
+      <surface>
+        <mu>1</mu>
+        <mu2>1</mu2>
+        <kp>5e7</kp>
+        <kd>1.0</kd>
+      </surface>
+    </collision>
+  </xacro:macro>
+
+
+  <link name="wheel_LF">
+    <xacro:wheel/>
+  </link>
+  <link name="wheel_RF">
+    <xacro:wheel/>
+  </link>
+  <link name="wheel_LB">
+    <xacro:wheel/>
+  </link>
+  <link name="wheel_RB">
+    <xacro:wheel/>
+  </link>
+</robot>

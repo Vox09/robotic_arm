@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<robot name="robotic_arm"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Constants for robot dimensions -->
+  <xacro:property name="PI" value="3.1415926535897931"/>
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find robotic_arm)/urdf/robotic_arm.gazebo" />
+  <!-- <xacro:include filename="$(find robotic_arm)/urdf/materials.xacro" /> -->
+
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/camera.urdf" />
+
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/base.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/wheels.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/shoulder.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/upperarm.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/elbow.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/forearm.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/wrist.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/hand.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/hand_L.urdf" />
+  <xacro:include filename="$(find robotic_arm)/urdf/parts/hand_R.urdf" />
+
+  <link name="dummy"/>
+  <joint name="dummy_joint" type="fixed">
+    <parent link="dummy"/>
+    <child link="base"/>
+    <origin xyz="0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
+
+  <xacro:macro name="joint_property">
+    <axis xyz="0 0 1"/>
+    <dynamics damping="0.07" friction="0.01"/>
+    <limit effort="100.0" velocity="3.0"/>
+  </xacro:macro>
+
+<!-- Joint settings -->
+  <joint name="wheel_LF_joint" type="continuous">
+    <parent link="base"/>
+    <child link="wheel_LF"/>
+    <origin xyz="-0.2 0.2 -0.05" rpy="0 ${PI/2} 0"/>
+    <axis xyz="1 1 0"/>
+  </joint>
+  <joint name="wheel_RF_joint" type="continuous">
+    <parent link="base"/>
+    <child link="wheel_RF"/>
+    <origin xyz="0.2 0.2 -0.05" rpy="0 ${PI/2} 0"/>
+    <axis xyz="1 1 0"/>
+  </joint>
+  <joint name="wheel_LB_joint" type="continuous">
+    <parent link="base"/>
+    <child link="wheel_LB"/>
+    <origin xyz="-0.2 -0.2 -0.05" rpy="0 ${PI/2} 0"/>
+    <axis xyz="1 1 0"/>
+  </joint>
+  <joint name="wheel_RB_joint" type="continuous">
+    <parent link="base"/>
+    <child link="wheel_RB"/>
+    <origin xyz="0.2 -0.2 -0.05" rpy="0 ${PI/2} 0"/>
+    <axis xyz="1 1 0"/>
+  </joint>
+
+  <joint name="camera_joint" type="fixed">
+    <parent link="base"/>
+    <child link="camera_link"/>
+    <origin xyz="0 0.32 0.5" rpy="0 ${PI/4} ${PI/2}"/>
+  </joint>
+
+  <joint name="0_shoulder_LR" type="continuous">
+    <parent link="base"/>
+    <child link="shoulder"/>
+    <origin xyz="0 0.263 0.455" rpy="0 0 ${PI/2}"/>
+    <xacro:joint_property/>
+  </joint>
+
+  <joint name="1_shoulder_FB" type="continuous">
+    <parent link="shoulder"/>
+    <child link="upperarm"/>
+    <origin xyz="0.0 0.05 -0.05" rpy="0 ${PI/2} ${PI/2}"/>
+    <xacro:joint_property/>
+  </joint>
+
+  <joint name="2_elbow_FB" type="continuous">
+    <parent link="upperarm"/>
+    <child link="elbow"/>
+    <origin xyz="0.25 0 0.0" rpy="0 0 ${-PI/2}"/>
+    <xacro:joint_property/>
+  </joint>
+
+  <joint name="3_elbow_R" type="continuous">
+    <parent link="elbow"/>
+    <child link="forearm"/>
+    <origin xyz="0.08 0 -0.02" rpy="${PI/2} 0 ${-PI/2}"/>
+    <xacro:joint_property/>
+  </joint>
+
+
+  <joint name="4_wrist_P" type="continuous">
+    <parent link="forearm"/>
+    <child link="wrist"/>
+    <origin xyz="0.00 -0.05 -0.30" rpy="${PI/2} ${-PI/2} 0"/>
+    <xacro:joint_property/>
+  </joint>
+
+
+  <joint name="5_wrist_Y" type="continuous">
+    <parent link="wrist"/>
+    <child link="hand"/>
+    <origin xyz="-0.05 0 -0.05" rpy="${-PI/2} 0 ${-PI/2}"/>
+    <xacro:joint_property/>
+  </joint>
+
+  <joint name="6_hand_left" type="prismatic">
+    <parent link="hand"/>
+    <child link="hand_L"/>
+    <origin xyz="0.0 0.25 -0.040" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="1.0" lower="-0.2" upper="0.0" />
+  </joint>
+
+  <joint name="7_hand_right" type="prismatic">
+    <parent link="hand"/>
+    <child link="hand_R"/>
+    <origin xyz="0.0 -0.25 -0.040" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="100" velocity="1.0" lower="0.0" upper="0.2" />
+  </joint>
+
+  <transmission name="tran_wheel_LF">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_LF_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel1">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran_wheel_RF">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_RF_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel2">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran_wheel_LB">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_LB_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel3">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran_wheel_RB">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_RB_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel4">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_S_LR">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="0_shoulder_LR">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_S_FB">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="1_shoulder_FB">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_E_FB">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="2_elbow_FB">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_E_R">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="3_elbow_R">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_W_P">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="4_wrist_P">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran_W_Y">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="5_wrist_Y">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+ 
+  <transmission name="tran_H_L">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="6_hand_left">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran_H_R">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="7_hand_right">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

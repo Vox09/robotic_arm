@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sanjiaokuai" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+
+  <link name="base">
+    <inertial>
+      <origin xyz="9.3251898e-02 5.0000000e-01 -6.6332689e-02" rpy="0 0 0" />
+      <mass value="1.5800914e+00" />
+      <inertia 
+      ixx="1.1703443e-01" 
+      ixy="0.0000000e-00" 
+      ixz="-2.1358263e-03" 
+      iyy="9.0584601e-03" 
+      iyz="0.0000000e-00" 
+      izz="1.1997404e-01" />
+    </inertial>
+    <visual>
+      <xacro:pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/sanjiaokuai.STL" 
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/sanjiaokuai.STL" 
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+      <surface>
+        <mu>1</mu>
+        <kp>5e7</kp>
+        <kd>1.0</kd>
+      </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="base">
+    <material>Gazebo/White</material>
+  </gazebo>
+</robot>

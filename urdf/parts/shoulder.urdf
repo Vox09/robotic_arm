@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="shoulder_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro> 
+  <link name="shoulder">
+    <inertial>
+      <origin xyz="0 1.1691159e-04 -1.0079262e-02" rpy="0 0 0" />
+      <mass value="8.0038255e-1" />
+      <inertia 
+      ixx="3.4957718e-04" 
+      ixy="0.0000000e-00" 
+      ixz="0.0000000e-00" 
+      iyy="3.4693313e-04" 
+      iyz="1.8640631e-06" 
+      izz="6.4063487e-04" />
+    </inertial>
+    <visual>
+      <xacro:shoulder_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/shoulder.STL" 
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:shoulder_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/shoulder.STL" 
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

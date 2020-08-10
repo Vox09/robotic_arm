@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="hand_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+  <link name="hand_L">
+    <inertial>
+      <origin xyz="0 0 -3.3896049e-02" rpy="0 0 0" />
+      <mass value="2.7705410e-02" />
+      <inertia 
+      ixx="9.0156455e-06" 
+      ixy="0.0000000e-00" 
+      ixz="0.0000000e-00" 
+      iyy="7.7625902e-06" 
+      iyz="0.0000000e-00" 
+      izz="5.1001298e-06" />
+    </inertial>
+    <visual>
+      <xacro:hand_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/gripper.STL"
+         scale="0.0001 0.0001 0.003"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:hand_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/gripper.STL"
+         scale="0.0001 0.0001 0.003"/>
+      </geometry>
+      <surface>
+        <mu>1</mu>
+        <kp>1e9</kp>
+        <kd>1.0</kd>
+      </surface>
+    </collision>
+  </link>
+</robot>

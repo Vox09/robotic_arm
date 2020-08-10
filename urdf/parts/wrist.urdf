@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="wrist_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+  <link name="wrist">
+    <inertial>
+      <origin xyz="7.4406717e-04 0 -2.0666887e-02" rpy="0 0 0" />
+      <mass value="6.3770423e-01" />
+      <inertia 
+      ixx="1.9297301e-04" 
+      ixy="0.0000000e-00" 
+      ixz="1.3443899e-05" 
+      iyy="2.1265381e-04" 
+      iyz="0.0000000e-00" 
+      izz="2.1509752e-04" />
+    </inertial>
+    <visual>
+      <xacro:wrist_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/wrist.STL"
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:wrist_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/wrist.STL"
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

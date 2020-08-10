@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="upperarm_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+  <link name="upperarm">
+    <inertial>
+      <origin xyz="1.6704046e-02 0 -9.0793135e-03" rpy="0 0 0" />
+      <mass value="8.9873900e-01" />
+      <inertia 
+      ixx="3.5372261e-04" 
+      ixy="0.0000000e-00" 
+      ixz="-1.0853064e-04" 
+      iyy="2.7163584e-03" 
+      iyz="0.0000000e-00" 
+      izz="3.0047380e-03" />
+    </inertial>
+    <visual>
+      <xacro:upperarm_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/upperarm.STL"
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:upperarm_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/upperarm.STL"
+        scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

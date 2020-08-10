@@ -1,0 +1,294 @@
+{
+  "keys": {},
+  "groups": {
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb0003000000000000000000000000077f0000043700000000000000250000077f000004370000000100000000078000000000000000250000077f00000437')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "           7   %   7        %   7"
+        },
+        "state": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff00000000fd000000010000000300000780000003e7fc0100000004fc000000000000032d0000010900fffffffc0200000002fb0000006c007200710074005f007200650063006f006e006600690067007500720065005f005f0050006100720061006d005f005f0031005f005f005f0070006c007500670069006e0063006f006e007400610069006e00650072005f0074006f0070005f0077006900640067006500740100000016000003e70000010f00fffffffb0000004c007200710074005f0063006f006e0073006f006c0065005f005f0043006f006e0073006f006c0065005f005f0031005f005f0043006f006e0073006f006c006500570069006400670065007401000001eb000002120000000000000000fb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c00690073006800650072005700690064006700650074010000038b000003f50000000000000000fb00000042007200710074005f0070006c006f0074005f005f0050006c006f0074005f005f0031005f005f00440061007400610050006c006f007400570069006400670065007401000003330000044d0000013f00fffffffb00000072007200710074005f0073006500720076006900630065005f00630061006c006c00650072005f005f005300650072007600690063006500430061006c006c00650072005f005f0031005f005f005300650072007600690063006500430061006c006c00650072005700690064006700650074010000043a000003460000000000000000000007800000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "                   -                                                                                                                                                                                                                     3 M ?                                                               : F                                                            "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "repr": "8",
+              "type": "repr"
+            }
+          },
+          "groups": {}
+        }
+      }
+    },
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "repr": "{'rqt_plot/Plot': [1], 'rqt_reconfigure/Param': [1]}",
+          "type": "repr"
+        }
+      },
+      "groups": {
+        "plugin__rqt_console__Console__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__ConsoleWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Console'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "exclude_filters": {
+                  "repr": "'severity'",
+                  "type": "repr"
+                },
+                "filter_splitter": {
+                  "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff000000010000000200000072000000720100000009010000000200')",
+                  "type": "repr(QByteArray.hex)",
+                  "pretty-print": "       r r     "
+                },
+                "highlight_filters": {
+                  "repr": "'message'",
+                  "type": "repr"
+                },
+                "message_limit": {
+                  "repr": "'20000'",
+                  "type": "repr"
+                },
+                "paused": {
+                  "repr": "'false'",
+                  "type": "repr"
+                },
+                "settings_exist": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "show_highlighted_only": {
+                  "repr": "'false'",
+                  "type": "repr"
+                },
+                "table_splitter": {
+                  "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff000000010000000200000046000000ed0100000009010000000200')",
+                  "type": "repr(QByteArray.hex)",
+                  "pretty-print": "       F       "
+                }
+              },
+              "groups": {
+                "exclude_filter_0": {
+                  "keys": {
+                    "enabled": {
+                      "repr": "'true'",
+                      "type": "repr"
+                    },
+                    "itemlist": {
+                      "repr": "''",
+                      "type": "repr"
+                    }
+                  },
+                  "groups": {}
+                },
+                "highlight_filter_0": {
+                  "keys": {
+                    "enabled": {
+                      "repr": "'true'",
+                      "type": "repr"
+                    },
+                    "regex": {
+                      "repr": "'false'",
+                      "type": "repr"
+                    },
+                    "text": {
+                      "repr": "''",
+                      "type": "repr"
+                    }
+                  },
+                  "groups": {}
+                }
+              }
+            }
+          }
+        },
+        "plugin__rqt_plot__Plot__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__DataPlotWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'MatPlot'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "autoscroll": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "plot_type": {
+                  "repr": "1",
+                  "type": "repr"
+                },
+                "topics": {
+                  "repr": "''",
+                  "type": "repr"
+                },
+                "x_limits": {
+                  "repr": "[549.1630231873696, 550.0770000000001]",
+                  "type": "repr"
+                },
+                "y_limits": {
+                  "repr": "[-10.0, 10.0]",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Message Publisher'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "'false'",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "repr": "\"[{'topic_name': '/walktoy/LD_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 0, 'counter': 0, 'expressions': {}}, {'topic_name': '/walktoy/LU_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 1, 'counter': 0, 'expressions': {}}, {'topic_name': '/walktoy/RD_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 2, 'counter': 0, 'expressions': {}}, {'topic_name': '/walktoy/RU_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 1.0, 'enabled': False, 'publisher_id': 3, 'counter': 0, 'expressions': {}}]\"",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_reconfigure__Param__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget___plugincontainer_top_widget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Dynamic Reconfigure'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "_splitter": {
+                  "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff0000000100000002000001660000004b0100000009010000000200')",
+                  "type": "repr(QByteArray.hex)",
+                  "pretty-print": "       f K     "
+                },
+                "expanded_nodes": {
+                  "repr": "[]",
+                  "type": "repr"
+                },
+                "selected_nodes": {
+                  "repr": "['/serial_publisher']",
+                  "type": "repr"
+                },
+                "splitter": {
+                  "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff0000000100000002000001040000022501ffffffff010000000100')",
+                  "type": "repr(QByteArray.hex)",
+                  "pretty-print": "         %     "
+                },
+                "text": {
+                  "repr": "''",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_service_caller__ServiceCaller__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__ServiceCallerWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Service Caller'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "current_service_name": {
+                  "repr": "'/gazebo/get_loggers'",
+                  "type": "repr"
+                },
+                "splitter_orientation": {
+                  "repr": "'2'",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

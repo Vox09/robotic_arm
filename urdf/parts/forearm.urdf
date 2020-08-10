@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="forearm_pos">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:macro>
+  <link name="forearm">
+    <inertial>
+      <origin xyz="0 -5.6032359e-04 -3.0870677e-02" rpy="0 0 0" />
+      <mass value="6.6799942e-01" />
+      <inertia 
+      ixx="1.5740923e-03" 
+      ixy="0.0000000e-00" 
+      ixz="0.0000000e-00" 
+      iyy="1.5568906e-03" 
+      iyz="-9.7555506e-05" 
+      izz="2.1312321e-04" />
+    </inertial>
+    <visual>
+      <xacro:forearm_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/forearm.STL"
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <xacro:forearm_pos/>
+      <geometry>
+        <mesh filename="package://robotic_arm/meshes/forearm.STL"
+         scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

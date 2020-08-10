@@ -1,0 +1,57 @@
+robotic_arm:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 500  
+  
+  # Position Controllers ---------------------------------------
+  0_shoulder_LR_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 0_shoulder_LR
+    pid: {p: 100.0, i: 0.1, d: 1.0, i_clamp_mix: -10.0, i_clamp_max: 10.0}
+  1_shoulder_FB_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 1_shoulder_FB
+    pid: {p: 200.0, i: 0.02, d: 1.0, i_clamp_mix: -50.0, i_clamp_max: 50.0}
+  2_elbow_FB_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 2_elbow_FB
+    pid: {p: 100.0, i: 0.1, d: 1.0, i_clamp_mix: -10.0, i_clamp_max: 10.0}
+  3_elbow_R_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 3_elbow_R
+    pid: {p: 50.0, i: 0.01, d: 0.1, i_clamp_mix: -0.5, i_clamp_max: 0.5}
+  4_wrist_P_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 4_wrist_P
+    pid: {p: 20.0, i: 0.02, d: 0.01, i_clamp_mix: -0.2, i_clamp_max: 0.2}
+  5_wrist_Y_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 5_wrist_Y
+    pid: {p: 20.0, i: 0.01, d: 0.02, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+  6_hand_left_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 6_hand_left
+    pid: {p: 500.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+  7_hand_right_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: 7_hand_right
+    pid: {p: 500.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+
+  # Velocity Controllers
+  wheel_LF_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_LF_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+  wheel_RF_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_RF_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+  wheel_LB_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_LB_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
+  wheel_RB_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_RB_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_clamp_mix: -0.1, i_clamp_max: 0.1}
